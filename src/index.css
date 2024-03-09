@@ -12,3 +12,7 @@
     z-index: 9999;
     background-color: rgb(154, 153, 153);
 }
+a{
+    text-decoration: none;
+    color: black;
+}
