@@ -7,9 +7,9 @@ import { logoutUser } from '../redux/features/userSlice'
 const Header = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate()
-    const {user} = useSelector(state => state.user)
+    const { user } = useSelector(state => state.user)
     //For Logout
-    const handleLogout=()=>{
+    const handleLogout = () => {
         localStorage.clear()
         dispatch(logoutUser());
         navigate('/')
@@ -33,7 +33,7 @@ const Header = () => {
         //     DropdownMenu = BeauticianDropdownMenu; 
         //     break;
         default:
-            TopMenu = UserTopMenu; 
+            TopMenu = UserTopMenu;
             DropdownMenu = UserDropdownMenu;
             break;
     }
@@ -44,37 +44,46 @@ const Header = () => {
                 <div className="container">
                     <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                         <Link to="/" className="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
-                        Beautician</Link>
+                            Beautician</Link>
 
                         <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                            {TopMenu.map(menu=>{
-                                return(
+                            {TopMenu.map(menu => {
+                                return (
                                     <>
                                         <li><Link to={menu.path} className="nav-link px-2 link-body-emphasis">{menu.name}</Link></li>
                                     </>
                                 )
                             })}
-                            
-                        </ul>
 
-                        
-                        <i className="fa-solid fa-bell mx-2"></i>
+                        </ul>
+                        <Link to='/notification'>
+                        <div className="position-relative mx-1">
+                            <i className="fa-solid fa-bell fa-xl"></i>
+                            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                {user && user.notification.length}
+                            </span>
+                        </div>
+                        </Link>
                         <p className='mx-2'><Link to='/profile'>{user?.name}</Link></p>
                         <div className="dropdown text-end">
                             <Link to="#" className="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" className="rounded-circle" />
                             </Link>
                             <ul className="dropdown-menu text-small">
-                                
-                                {DropdownMenu.map(menu=>{
-                                    return(
+
+                                {DropdownMenu.map(menu => {
+                                    return (
                                         <>
                                             <li><Link className="dropdown-item" to={menu.path}><i className={menu.icon}></i>{menu.name}</Link></li>
                                         </>
                                     )
                                 })}
-                                <li><hr className="dropdown-divider"/></li>
-                                <li onClick={handleLogout}><Link className="dropdown-item" to="/login"><i className="fa-solid fa-right-from-bracket"></i> Logout</Link></li>
+                                <li><hr className="dropdown-divider" /></li>
+                                <li onClick={handleLogout}>
+                                    <Link className="dropdown-item" to="/login">
+                                        <i className="fa-solid fa-right-from-bracket"></i> Logout
+                                    </Link>
+                                </li>
                             </ul>
                         </div>
                     </div>

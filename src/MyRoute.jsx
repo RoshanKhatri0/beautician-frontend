@@ -10,6 +10,7 @@ import ProtectedRoutes from './componenets/ProtectedRoutes'
 import PublicRoute from './componenets/PublicRoute'
 import PageNotFound from './pages/PageNotFound'
 import ApplyBeautician from './pages/ApplyBeautician'
+import NotificationPage from './pages/NotificationPage'
 
 const MyRoute = () => {
   const {loading} = useSelector(state=>state.alerts)
@@ -21,7 +22,7 @@ const MyRoute = () => {
                     <Route path='' element={<Layout/>}>
                       <Route index element={<ProtectedRoutes> <HomePage/> </ProtectedRoutes>}/>
                       <Route path='/apply-beautician' element={<ProtectedRoutes> <ApplyBeautician/> </ProtectedRoutes>}/>
-
+                      <Route path='/notification' element={<ProtectedRoutes> <NotificationPage/> </ProtectedRoutes>}/>
                     </Route>
                     <Route path='login' element={<PublicRoute><Login/></PublicRoute>} />
                     <Route path='register' element={<PublicRoute><Register/></PublicRoute>} />

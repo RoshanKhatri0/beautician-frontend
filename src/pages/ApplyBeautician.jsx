@@ -1,9 +1,18 @@
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
+import {useSelector, useDispatch} from 'react-redux'
+import { useNavigate } from 'react-router-dom';
+import { hideLoading, showLoading } from '../redux/features/alertSlice';
+import axios from 'axios';
+import { API } from '../config';
 
 const ApplyBeautician = () => {
+  const {user} = useSelector(state => state.user)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     // Personal Details
-    name: '',
+    beautician_name: '',
     email: '',
     phoneNumber: '',
     instagram: '',
@@ -11,69 +20,111 @@ const ApplyBeautician = () => {
     tiktok: '',
 
     // Professional Details
-    bio: '',
+    beautician_bio: '',
     experience: '',
     pricing: '',
-    servicesOffered: '',
-    workingHours: '',
-    certification: '',
-    profilePic: null,
+    services_offered: '',
+    working_hours: '',
+    certifications: '',
+    beautician_profilepic: null,
     gallery: [],
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleChange = name => event => {
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: event.target.value,
     });
   };
 
-  const handleFileChange = (e) => {
-    const { name, files } = e.target;
-    if (name === 'profilePic') {
-      // If profilePic, store the first selected file
-      setFormData({
-        ...formData,
-        [name]: files[0],
+  // const handleFileChange = (e) => {
+  //   const { name, files } = e.target;
+  //   if (name === 'beautician_profilepic') {
+  //     // If profilePic, store the first selected file
+  //     setFormData({
+  //       ...formData,
+  //       [name]: files[0],
+  //     });
+  //   } else if (name === 'gallery') {
+  //     // If gallery, store an array of all selected files
+  //     const fileList = Array.from(files);
+  //     setFormData({
+  //       ...formData,
+  //       [name]: fileList,
+  //     });
+  //   }
+  // };
+  const handleFileChange = event =>{
+    setFormData({...formData, beautician_profilepic:event.target.files[0]})
+  }
+  const {beautician_name,beautician_bio,experience,gallery,pricing,services_offered,working_hours,certifications} = formData
+  const handleSubmit = async e => {
+    e.preventDefault();
+    try {
+      dispatch(showLoading());
+      
+      // Create a FormData object to store all form data, including files
+      const formDataToSend = new FormData();
+      formDataToSend.append('beautician_name', beautician_name)
+      formDataToSend.append('beautician_bio', beautician_bio)
+      formDataToSend.append('experience', experience)
+      formDataToSend.append('pricing', pricing)
+      formDataToSend.append('services_offered', services_offered)
+      formDataToSend.append('working_hours', working_hours)
+      formDataToSend.append('certifications', certifications)
+      formDataToSend.append('beautician_profilepic', formData.beautician_profilepic)
+
+  
+      // // Append userId separately
+      // formDataToSend.append('userId', user._id);
+  
+      // Send the form data using axios
+      const res = await axios.post(`${API}/apply-beautician`, formDataToSend, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
       });
-    } else if (name === 'gallery') {
-      // If gallery, store an array of all selected files
-      const fileList = Array.from(files);
-      setFormData({
-        ...formData,
-        [name]: fileList,
-      });
+  
+      dispatch(hideLoading());
+  
+      if (res.data.success) {
+        toast.success(res.data.success);
+        navigate('/');
+        // Reset form fields
+        setFormData({
+          // Personal Details
+          beautician_name: '',
+          email: '',
+          phoneNumber: '',
+          instagram: '',
+          facebook: '',
+          tiktok: '',
+
+          // Professional Details
+          beautician_bio: '',
+          experience: '',
+          pricing: '',
+          services_offered: '',
+          working_hours: '',
+          certifications: '',
+          beautician_profilepic: null,
+          gallery: [],
+        });
+      } else {
+        toast.error(res.data.success);
+      }
+  
+      // Reset file input fields
+      document.getElementById('profilePic').value = '';
+      document.getElementById('gallery').value = '';
+    } catch (error) {
+      dispatch(hideLoading());
+      console.log(error);
+      toast.error('Something went wrong');
     }
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
-    // Reset form fields
-    setFormData({
-      // Personal Details
-      name: '',
-      email: '',
-      phoneNumber: '',
-      instagram: '',
-      facebook: '',
-      tiktok: '',
-
-      // Professional Details
-      bio: '',
-      experience: '',
-      pricing: '',
-      servicesOffered: '',
-      workingHours: '',
-      certification: '',
-      profilePic: null,
-      gallery: [],
-    });
-    // Reset file input fields
-    document.getElementById('profilePic').value = '';
-    document.getElementById('gallery').value = '';
-  };
+  
 
   return (
     <div className="container">
@@ -91,8 +142,8 @@ const ApplyBeautician = () => {
               className="form-control"
               id="name"
               name="name"
-              value={formData.name}
-              onChange={handleChange}
+              value={beautician_name}
+              onChange={handleChange('beautician_name')}
               required
             />
           </div>
@@ -106,7 +157,7 @@ const ApplyBeautician = () => {
               id="email"
               name="email"
               value={formData.email}
-              onChange={handleChange}
+              onChange={handleChange('email')}
               required
             />
           </div>
@@ -114,7 +165,8 @@ const ApplyBeautician = () => {
         <div className="row mb-3">
           <div className="col-md-6">
             <label htmlFor="phoneNumber" className="form-label">
-              Phone Number <span className="text-danger">*</span>
+              Phone Number 
+              {/* <span className="text-danger">*</span> */}
             </label>
             <input
               type="tel"
@@ -123,7 +175,7 @@ const ApplyBeautician = () => {
               name="phoneNumber"
               value={formData.phoneNumber}
               onChange={handleChange}
-              required
+              // required
             />
           </div>
           <div className="col-md-6">
@@ -180,8 +232,8 @@ const ApplyBeautician = () => {
               className="form-control"
               id="bio"
               name="bio"
-              value={formData.bio}
-              onChange={handleChange}
+              value={beautician_bio}
+              onChange={handleChange('beautician_bio')}
             ></textarea>
           </div>
           <div className="col-md-6">
@@ -193,8 +245,8 @@ const ApplyBeautician = () => {
               className="form-control"
               id="experience"
               name="experience"
-              value={formData.experience}
-              onChange={handleChange}
+              value={experience}
+              onChange={handleChange('experience')}
             />
           </div>
         </div>
@@ -208,8 +260,8 @@ const ApplyBeautician = () => {
               className="form-control"
               id="pricing"
               name="pricing"
-              value={formData.pricing}
-              onChange={handleChange}
+              value={pricing}
+              onChange={handleChange('pricing')}
             />
           </div>
           <div className="col-md-6">
@@ -221,8 +273,8 @@ const ApplyBeautician = () => {
               className="form-control"
               id="servicesOffered"
               name="servicesOffered"
-              value={formData.servicesOffered}
-              onChange={handleChange}
+              value={services_offered}
+              onChange={handleChange('services_offered')}
             />
           </div>
         </div>
@@ -236,8 +288,8 @@ const ApplyBeautician = () => {
               className="form-control"
               id="workingHours"
               name="workingHours"
-              value={formData.workingHours}
-              onChange={handleChange}
+              value={working_hours}
+              onChange={handleChange('working_hours')}
             />
           </div>
           <div className="col-md-6">
@@ -249,8 +301,8 @@ const ApplyBeautician = () => {
               className="form-control"
               id="certification"
               name="certification"
-              value={formData.certification}
-              onChange={handleChange}
+              value={certifications}
+              onChange={handleChange('certifications')}
             />
           </div>
         </div>
@@ -272,7 +324,7 @@ const ApplyBeautician = () => {
             />
           </div>
         </div>
-        <div className="row mb-3">
+        {/* <div className="row mb-3">
           <div className="col-md-6">
             <label htmlFor="gallery" className="form-label">
               Gallery
@@ -287,7 +339,7 @@ const ApplyBeautician = () => {
               multiple
             />
           </div>
-        </div>
+        </div> */}
 
         <button type="submit" className="btn btn-primary">
           Submit
