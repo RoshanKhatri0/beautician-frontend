@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import toast from 'react-hot-toast';
+import React, { useState } from 'react'
+import toast from 'react-hot-toast'
 import {useSelector, useDispatch} from 'react-redux'
-import { useNavigate } from 'react-router-dom';
-import { hideLoading, showLoading } from '../redux/features/alertSlice';
-import axios from 'axios';
-import { API } from '../config';
+import { useNavigate } from 'react-router-dom'
+import { hideLoading, showLoading } from '../redux/features/alertSlice'
+import axios from 'axios'
+import { API } from '../config'
 
 const ApplyBeautician = () => {
   const {user} = useSelector(state => state.user)
@@ -89,7 +89,7 @@ const ApplyBeautician = () => {
       dispatch(hideLoading());
   
       if (res.data.success) {
-        toast.success(res.data.success);
+        toast.success(res.data.message);
         navigate('/');
         // Reset form fields
         setFormData({
@@ -112,7 +112,7 @@ const ApplyBeautician = () => {
           gallery: [],
         });
       } else {
-        toast.error(res.data.success);
+        toast.error(res.data.message);
       }
   
       // Reset file input fields
