@@ -73,13 +73,14 @@ const ApplyBeautician = () => {
       formDataToSend.append('working_hours', working_hours)
       formDataToSend.append('certifications', certifications)
       formDataToSend.append('beautician_profilepic', formData.beautician_profilepic)
+      formDataToSend.append('userId', user._id);
 
   
       // // Append userId separately
       // formDataToSend.append('userId', user._id);
   
       // Send the form data using axios
-      const res = await axios.post(`${API}/apply-beautician`, formDataToSend, {
+      const res = await axios.post(`${API}/apply-beautician`, formDataToSend,  {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${localStorage.getItem('token')}`,

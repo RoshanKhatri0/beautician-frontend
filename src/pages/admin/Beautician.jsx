@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { API } from '../../config'
+import toast from 'react-hot-toast';
 
 const Beautician = () => {
   const [beauticians, setBeauticians] = useState([])
@@ -23,6 +24,23 @@ const Beautician = () => {
 
     getBeauticians()
   }, [])
+  
+  //handle account status
+  const handleAccountStatus = async(record, status) =>{
+    try {
+      const res = await axios.post(`${API}/changeAccountStatus`,{bId: record._id, userId: record.userId , status:status},
+      {
+        headers:{
+          Authorization : `Bearer ${localStorage.getItem('token')}`
+        }
+      })
+      if(res.data.success){
+        toast.success(res.data.message)
+      }
+    } catch (error) {
+      toast.error('Something went wrong')
+    }
+  }
 
   const columns = [
     {
@@ -43,7 +61,7 @@ const Beautician = () => {
       render: (text, record) => (
         <div className="d-flex">
           {record.status === "Pending" ? 
-            <button className='btn btn-success'>Approve</button> :
+            <button className='btn btn-success' onClick={()=> handleAccountStatus(record, 'approved')}>Approve</button> :
             <button className='btn btn-danger'>Reject</button>
           }
         </div>
