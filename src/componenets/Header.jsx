@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { AdminDropdownMenu, AdminTopMenu, UserDropdownMenu, UserTopMenu } from '../Data/Navdata'
+import { AdminDropdownMenu, AdminTopMenu, BeauticianDropdownMenu, BeauticianTopMenu, UserDropdownMenu, UserTopMenu } from '../Data/Navdata'
 import { useSelector, useDispatch } from 'react-redux'
 import { logoutUser } from '../redux/features/userSlice'
 
@@ -28,10 +28,10 @@ const Header = () => {
             TopMenu = AdminTopMenu;
             DropdownMenu = AdminDropdownMenu;
             break;
-        // case 2:
-        //     TopMenu = BeauticianTopMenu;
-        //     DropdownMenu = BeauticianDropdownMenu; 
-        //     break;
+        case 2:
+            TopMenu = BeauticianTopMenu;
+            DropdownMenu = BeauticianDropdownMenu; 
+            break;
         default:
             TopMenu = UserTopMenu;
             DropdownMenu = UserDropdownMenu;
@@ -78,12 +78,18 @@ const Header = () => {
                                         </>
                                     )
                                 })}
+                                <li>
+                                    <Link className="dropdown-item" to= {`/profile/${user?._id}`} >
+                                        <i className="fa-solid fa-user"></i> Profile
+                                    </Link>
+                                </li>
                                 <li><hr className="dropdown-divider" /></li>
                                 <li onClick={handleLogout}>
                                     <Link className="dropdown-item" to="/login">
                                         <i className="fa-solid fa-right-from-bracket"></i> Logout
                                     </Link>
                                 </li>
+
                             </ul>
                         </div>
                     </div>

@@ -22,11 +22,6 @@ export const UserTopMenu = [
 ]
 export const UserDropdownMenu =[
     {
-        name:'Profile',
-        path:'/profile',
-        icon:'<i class="fa-solid fa-user"></i>'
-    },
-    {
         name:'Apply Beautician',
         path:'/apply-beautician',
         icon:'<i class="fa-solid fa-person-dress"></i>'
@@ -57,14 +52,27 @@ export const AdminTopMenu = [
     },
 ]
 export const AdminDropdownMenu =[
+]
+//beautician menu
+export const BeauticianTopMenu = [
     {
-        name:'Profile',
-        path:'/profile',
-        icon:'<i class="fa-solid fa-user"></i>'
+        name:'Home',
+        path:'/'
     },
     {
-        name:'Add Beautician',
-        path:'/add-beautician',
-        icon:'<i class="fa-solid fa-person-dress"></i>'
+        name:'Appointments',
+        path:'/appointments'
     },
+    {
+        name:'Shop',
+        path:'/shop'
+    },
+    {
+        name:'Products',
+        path:'/products'
+    },
+    
+]
+export const BeauticianDropdownMenu =[
+    
 ]
