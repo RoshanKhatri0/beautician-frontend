@@ -60,7 +60,6 @@ const ApplyBeautician = () => {
   const {beautician_name,beautician_bio,experience,gallery,pricing,services_offered,working_hours,certifications} = formData
   const handleSubmit = async e => {
     e.preventDefault();
-    try {
       dispatch(showLoading());
       
       // Create a FormData object to store all form data, including files
@@ -75,10 +74,6 @@ const ApplyBeautician = () => {
       formDataToSend.append('beautician_profilepic', formData.beautician_profilepic)
       formDataToSend.append('userId', user._id);
 
-  
-      // // Append userId separately
-      // formDataToSend.append('userId', user._id);
-  
       // Send the form data using axios
       const res = await axios.post(`${API}/apply-beautician`, formDataToSend,  {
         headers: {
@@ -115,15 +110,6 @@ const ApplyBeautician = () => {
       } else {
         toast.error(res.data.message);
       }
-  
-      // Reset file input fields
-      document.getElementById('profilePic').value = '';
-      document.getElementById('gallery').value = '';
-    } catch (error) {
-      dispatch(hideLoading());
-      console.log(error);
-      toast.error('Something went wrong');
-    }
   };
   
 
