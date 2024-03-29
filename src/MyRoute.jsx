@@ -14,6 +14,7 @@ import NotificationPage from './pages/NotificationPage'
 import Users from './pages/admin/Users'
 import Beautician from './pages/admin/Beautician'
 import Profile from './pages/Beautician/Profile'
+import BookingPage from './pages/Beautician/BookingPage'
 
 const MyRoute = () => {
   const {loading} = useSelector(state=>state.alerts)
@@ -26,6 +27,7 @@ const MyRoute = () => {
                       <Route index element={<ProtectedRoutes> <HomePage/> </ProtectedRoutes>}/>
                       <Route path='/apply-beautician' element={<ProtectedRoutes> <ApplyBeautician/> </ProtectedRoutes>}/>
                       <Route path='/profile/:id' element={<ProtectedRoutes> <Profile/> </ProtectedRoutes>}/>
+                      <Route path='/book-appointment/:beauticianId' element={<ProtectedRoutes> <BookingPage/> </ProtectedRoutes>}/>
                       <Route path='/users' element={<ProtectedRoutes> <Users/> </ProtectedRoutes>}/>
                       <Route path='/beauticians' element={<ProtectedRoutes> <Beautician/> </ProtectedRoutes>}/>
                       <Route path='/notification' element={<ProtectedRoutes> <NotificationPage/> </ProtectedRoutes>}/>
