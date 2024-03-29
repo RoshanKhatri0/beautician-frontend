@@ -1,33 +1,37 @@
-import React, {useEffect} from 'react'
-import Profile from '../componenets/Profile'
-import Cover from '../componenets/Cover'
+import React, {useEffect, useState} from 'react'
 import axios from 'axios'
+import Profile from '../componenets/Profile'
 import { API } from '../config';
 
 
 const HomePage = () => {
+  const [beaucticians, setBeauticians] = useState([])
   //login user data
-  const getUserData= async()=>{
+  const getBeauticianData= async()=>{
     try{
-      const res = await axios.post(`${API}/getUserData`,{},{
+      const res = await axios.get(`${API}/getAllBeautician`,{
         headers:{
           Authorization : "Bearer " + localStorage.getItem('token'),
         },
       })
+      if(res.data.success){
+        setBeauticians(res.data.data)
+      }
     }
     catch(error){
       console.log(error)
     }
   }
   useEffect(()=>{
-    getUserData()
+    getBeauticianData()
   },[])
   return (
     <>
-      
-        <Cover/>
+    <Profile/>
+      <div className="row">
+        
+      </div>
 
-      <Profile />
     </>
   )
 }
