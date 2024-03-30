@@ -15,6 +15,7 @@ import Users from './pages/admin/Users'
 import Beautician from './pages/admin/Beautician'
 import Profile from './pages/Beautician/Profile'
 import BookingPage from './pages/Beautician/BookingPage'
+import Appointments from './pages/Appointments'
 
 const MyRoute = () => {
   const {loading} = useSelector(state=>state.alerts)
@@ -31,6 +32,7 @@ const MyRoute = () => {
                       <Route path='/users' element={<ProtectedRoutes> <Users/> </ProtectedRoutes>}/>
                       <Route path='/beauticians' element={<ProtectedRoutes> <Beautician/> </ProtectedRoutes>}/>
                       <Route path='/notification' element={<ProtectedRoutes> <NotificationPage/> </ProtectedRoutes>}/>
+                      <Route path='/appointments' element={<ProtectedRoutes> <Appointments/> </ProtectedRoutes>}/>
                     </Route>
                     <Route path='login' element={<PublicRoute><Login/></PublicRoute>} />
                     <Route path='register' element={<PublicRoute><Register/></PublicRoute>} />

@@ -7,8 +7,9 @@ import { StaticDateTimePicker } from '@mui/x-date-pickers/StaticDateTimePicker'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { API } from '../../config'
-import { useSelector } from 'react-redux'
-
+import { useDispatch, useSelector } from 'react-redux'
+import {showLoading, hideLoading} from '../../redux/features/alertSlice'
+import toast from 'react-hot-toast';
 
 const BookingPage = () => {
   const { user } = useSelector((state) => state.user)
@@ -17,6 +18,7 @@ const BookingPage = () => {
   const [selectedDateTime, setSelectedDateTime] = useState(dayjs())
   const [date, setDate] = useState('')
   const [time, setTime] = useState('')
+  const dispatch = useDispatch()
 
 
   const getBeauticianData = async () => {
@@ -44,6 +46,35 @@ const BookingPage = () => {
     setDate(formattedDate)
     setTime(formattedTime)
     setSelectedDateTime(newDateTime)
+  }
+  // Booking
+  const handleBooking = async() =>{
+    try {
+      dispatch(showLoading())
+      const res = await axios.post(`${API}/book-appointment`,
+      {
+        beauticianId: params.beauticianId,
+        userId: user._id,
+        beauticianInfo: beaucticians,
+        userInfo: user,
+        date: date,
+        time: time
+      },
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem('token'),
+        }
+      }
+      )
+      dispatch(hideLoading())
+      if(res.data.success){
+        toast.success(res.data.message)
+      }
+    } catch (error) {
+      dispatch(hideLoading())
+      console.log(error)
+      toast.error("Failed to book appointment. Please try again later.")
+    }
   }
 
   return (
@@ -100,7 +131,7 @@ const BookingPage = () => {
                 </div>
               </div>
               <div className="col-md-12 text-center p-3">
-                <button type="submit" className="btn btn-primary btn-lg">Submit</button>
+                <button type="submit" className="btn btn-primary btn-lg" onClick={handleBooking}>Book Now</button>
               </div>
 
             </div>
