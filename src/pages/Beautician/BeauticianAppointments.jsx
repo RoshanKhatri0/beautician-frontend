@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { API } from '../config'
+import { API } from '../../config'
+import toast from 'react-hot-toast'
 
-const Appointments = () => {
+const BeauticianAppointments = () => {
     const [appointments, setAppointments] = useState([])
     const getAppointments = async() =>{
         try {
-            const res = await axios.get(`${API}/user-appointments`,
+            const res = await axios.get(`${API}/beautician-appointments`,
             {
                 headers: {
                   Authorization: "Bearer " + localStorage.getItem('token'),
@@ -23,6 +24,28 @@ const Appointments = () => {
     useEffect(()=>{
         getAppointments()
     },[])
+
+    const handleStatus =async(record,status)=>{
+      try {
+        const res = await axios.post (`${API}/update-status`,
+        {
+          appointmentId: record._id, status
+        },
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem('token'),
+          }
+        }
+        )
+        if(res.data.success){
+          toast.success(res.data.message)
+          getAppointments()
+        }
+      } catch (error) {
+        console.log(error)
+        toast.error('Something went wrong')
+      }
+    }
 
     const columns = [
         {
@@ -51,12 +74,25 @@ const Appointments = () => {
             title:'Status',
             dataIndex:'status',
         },
+        {
+          title: 'Actions',
+          dataIndex: 'actions',
+          render: (text, record) => (
+            <div className="d-flex">
+              {record.status === "pending" &&(
+                <div className="d-flex">
+                <button className='btn btn-success' onClick={()=> handleStatus(record, 'approved')}>Approve</button>
+                <button className='btn btn-danger mx-2' onClick={()=> handleStatus(record, 'reject')}>Reject</button>
+                </div>
+              )}
+            </div>
+          )
+        }
 
     ]
-
   return (
     <>
-    <div className="container-fluid p-3">
+        <div className="container-fluid p-3">
     <h1 className='text-center'>Appointments List</h1>
         <table className="table table-striped table-bordered table-hover">
         <thead>
@@ -79,9 +115,8 @@ const Appointments = () => {
         </tbody>
       </table>
     </div>
-        
     </>
   )
 }
 
-export default Appointments
+export default BeauticianAppointments

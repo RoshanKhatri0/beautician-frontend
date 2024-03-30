@@ -61,7 +61,7 @@ export const BeauticianTopMenu = [
     },
     {
         name:'Appointments',
-        path:'/appointments'
+        path:'/beautician-appointments'
     },
     {
         name:'Shop',
