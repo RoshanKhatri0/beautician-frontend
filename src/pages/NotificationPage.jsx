@@ -25,8 +25,10 @@ const NotificationPage = () => {
             )
             dispatch(hideLoading())
             if (res.data.success) {
+                window.location.reload()
                 toast.success(res.data.message)
             }
+            
             else {
                 toast.error(res.data.message)
             }
@@ -49,6 +51,7 @@ const NotificationPage = () => {
             })
             dispatch(hideLoading())
             if(res.data.success){
+                window.location.reload()
                 toast.success(res.data.message)
             }
             else{
