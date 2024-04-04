@@ -1,13 +1,16 @@
 import React from 'react'
-import { useState, CSSProperties } from "react";
-import ClipLoader from "react-spinners/ClipLoader";
 
 const Spinner = () => {
   return (
     <>
       <div className="d-flex justify-content-center spinner">
-        <div className="spinner-border" role="status">
-          <span className="visually-hidden">Loading...</span>
+        <div class="typing-indicator">
+          <div class="typing-circle"></div>
+          <div class="typing-circle"></div>
+          <div class="typing-circle"></div>
+          <div class="typing-shadow"></div>
+          <div class="typing-shadow"></div>
+          <div class="typing-shadow"></div>
         </div>
       </div>
     </>

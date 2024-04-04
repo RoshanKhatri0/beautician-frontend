@@ -18,7 +18,7 @@ const Profile = ({ beauctician}) => {
             <div className="content">
               <span className="name">{beauctician.beautician_name}</span>
               <span className="about-me">{beauctician.beautician_bio}</span>
-              <span><i className="fa-solid fa-arrow-right fa-xl"  onClick={()=> navigate(`/profile/${beauctician._id}`)}></i></span>
+              <span className='text-end text-white'><i className="fa-solid fa-arrow-right fa-xl text-end"  onClick={()=> navigate(`/profile/${beauctician._id}`)}></i></span>
             </div>
             <div className="bottom-bottom">
               <div className="social-links-container">
