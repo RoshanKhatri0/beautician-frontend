@@ -13,7 +13,7 @@ import ApplyBeautician from './pages/ApplyBeautician'
 import NotificationPage from './pages/NotificationPage'
 import Users from './pages/admin/Users'
 import Beautician from './pages/admin/Beautician'
-import Profile from './pages/Beautician/Profile'
+import UpdateProfile from './pages/Beautician/UpdateProfile'
 import BookingPage from './pages/Beautician/BookingPage'
 import BeauticianAppointments from './pages/Beautician/BeauticianAppointments'
 import Appointments from './pages/Appointments'
@@ -31,7 +31,7 @@ const MyRoute = () => {
                     <Route path='' element={<Layout/>}>
                       <Route index element={<ProtectedRoutes> <HomePage/> </ProtectedRoutes>}/>
                       <Route path='/apply-beautician' element={<ProtectedRoutes> <ApplyBeautician/> </ProtectedRoutes>}/>
-                      <Route path='/profile/:id' element={<ProtectedRoutes> <Profile/> </ProtectedRoutes>}/>
+                      <Route path='/profile/:id' element={<ProtectedRoutes> <UpdateProfile/> </ProtectedRoutes>}/>
                       <Route path='/book-appointment/:beauticianId' element={<ProtectedRoutes> <BookingPage/> </ProtectedRoutes>}/>
                       <Route path='/users' element={<ProtectedRoutes> <Users/> </ProtectedRoutes>}/>
                       <Route path='/beauticians' element={<ProtectedRoutes> <Beautician/> </ProtectedRoutes>}/>

@@ -7,7 +7,7 @@ import axios from 'axios'
 import {API} from '../../config'
 import {useParams} from 'react-router-dom'
 
-const Profile = () => {
+const UpdateProfile = () => {
   const {user} = useSelector(state => state.user)
   const [beautician, setBeautician] = useState(null)
   const params = useParams()
@@ -385,4 +385,4 @@ const Profile = () => {
   )
 }
 
-export default Profile
+export default UpdateProfile
