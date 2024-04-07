@@ -7,9 +7,7 @@ const Layout = () => {
   return (
     <>
         <Header/>
-        <div className="container-fluid outlet">
           <Outlet/>
-        </div>
         <Footer/>
     </>
   )

@@ -14,13 +14,33 @@ header{
 }
 .footer{
   background-color: #fbb9b6;
-  margin-top: 3rem;
 }
 .footer i{
   color: #000;
 }
-.outlet{
-  padding-top: 1rem;
+
+/* Homepage intro */
+.intro-svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.intro-svg svg {
+  position: relative;
+  display: block;
+  width: calc(122% + 1.3px);
+  height: 298px;
+}
+.intro{
+  height: 100vh;
+}
+.intro-svg .shape-fill {
+  fill: #FFFFFF;
 }
 
 /* loading */
