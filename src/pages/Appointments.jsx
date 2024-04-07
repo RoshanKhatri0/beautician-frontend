@@ -56,7 +56,7 @@ const Appointments = () => {
 
   return (
     <>
-    <div className="container-fluid p-3">
+    <div className="container-fluid h-100">
     <h1 className='text-center'>Appointments List</h1>
         <table className="table table-striped table-bordered table-hover">
         <thead>

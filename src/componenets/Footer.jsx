@@ -4,50 +4,20 @@ import { Link } from 'react-router-dom'
 const Footer = () => {
   return (
     <>
-      <div className="container-fluid bg-secondary-subtle">
-        <footer className="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 mt-5 border-top">
-          <div className="col mb-3">
-            <Link to="/" className="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
+      <div className="container-fluid footer">
+        <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+          <div className="col-md-4 d-flex align-items-center">
+            <Link href="/" className="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+              <p>Company Image</p>
             </Link>
-            <p className="text-body-secondary">&copy; 2023</p>
+            <span className="mb-3 mb-md-0 text-body-secondary">&copy; 2024 Company, Inc</span>
           </div>
 
-          <div className="col mb-3">
-
-          </div>
-
-          <div className="col mb-3">
-            <h5>Section</h5>
-            <ul className="nav flex-column">
-              <li className="nav-item mb-2"><Link to="#" className="nav-link p-0 text-body-secondary">Home</Link></li>
-              <li className="nav-item mb-2"><Link to="#" className="nav-link p-0 text-body-secondary">Features</Link></li>
-              <li className="nav-item mb-2"><Link to="#" className="nav-link p-0 text-body-secondary">Pricing</Link></li>
-              <li className="nav-item mb-2"><Link to="#" className="nav-link p-0 text-body-secondary">FAQs</Link></li>
-              <li className="nav-item mb-2"><Link to="#" className="nav-link p-0 text-body-secondary">About</Link></li>
-            </ul>
-          </div>
-
-          <div className="col mb-3">
-            <h5>Section</h5>
-            <ul className="nav flex-column">
-              <li className="nav-item mb-2"><Link to="#" className="nav-link p-0 text-body-secondary">Home</Link></li>
-              <li className="nav-item mb-2"><Link to="#" className="nav-link p-0 text-body-secondary">Features</Link></li>
-              <li className="nav-item mb-2"><Link to="#" className="nav-link p-0 text-body-secondary">Pricing</Link></li>
-              <li className="nav-item mb-2"><Link to="#" className="nav-link p-0 text-body-secondary">FAQs</Link></li>
-              <li className="nav-item mb-2"><Link to="#" className="nav-link p-0 text-body-secondary">About</Link></li>
-            </ul>
-          </div>
-
-          <div className="col mb-3">
-            <h5>Section</h5>
-            <ul className="nav flex-column">
-              <li className="nav-item mb-2"><Link to="#" className="nav-link p-0 text-body-secondary">Home</Link></li>
-              <li className="nav-item mb-2"><Link to="#" className="nav-link p-0 text-body-secondary">Features</Link></li>
-              <li className="nav-item mb-2"><Link to="#" className="nav-link p-0 text-body-secondary">Pricing</Link></li>
-              <li className="nav-item mb-2"><Link to="#" className="nav-link p-0 text-body-secondary">FAQs</Link></li>
-              <li className="nav-item mb-2"><Link to="#" className="nav-link p-0 text-body-secondary">About</Link></li>
-            </ul>
-          </div>
+          <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
+            <li className="ms-3"><Link className="text-body-secondary" href="#"><i className="fa-brands fa-facebook fa-lg"></i></Link></li>
+            <li className="ms-3"><Link className="text-body-secondary" href="#"><i className="fa-brands fa-instagram fa-lg"></i></Link></li>
+            <li className="ms-3"><Link className="text-body-secondary" href="#"><i className="fa-brands fa-x-twitter fa-lg"></i></Link></li>
+          </ul>
         </footer>
       </div>
     </>

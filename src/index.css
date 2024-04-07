@@ -10,9 +10,17 @@
 }
 header{
   font-weight: 600;
+  background-color: #fbb9b6;
+}
+.footer{
+  background-color: #fbb9b6;
+  margin-top: 3rem;
+}
+.footer i{
+  color: #000;
 }
 .outlet{
-  margin-top: 3.6rem;
+  padding-top: 1rem;
 }
 
 /* loading */
