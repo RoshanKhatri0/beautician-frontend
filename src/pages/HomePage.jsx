@@ -1,32 +1,27 @@
-import React, {Fragment, useEffect, useState} from 'react'
-import axios from 'axios'
-import Profile from '../componenets/Profile'
-import { API } from '../config';
+import React from 'react'
+import { motion } from 'framer-motion';
+import Services from '../componenets/Services';
+import ProfileList from '../componenets/ProfileList';
 
 const HomePage = () => {
-  const [beaucticians, setBeauticians] = useState([])
-  const getBeauticianData= async()=>{
-    try{
-      const res = await axios.get(`${API}/getAllBeautician`,{
-        headers:{
-          Authorization : "Bearer " + localStorage.getItem('token'),
-        },
-      })
-      if(res.data.success){
-        setBeauticians(res.data.data)
-      }
-    }
-    catch(error){
-      console.log(error)
-    }
-  }
-  useEffect(()=>{
-    getBeauticianData()
-  },[])
+  
+  
   return (
     <>
-    <div className="position-relative intro">
-        <img src="/images/intro.png" alt="intro" width={"100%"} />
+    <section className="position-relative intro p-3">
+      <div className="container d-flex align-items-center h-50">
+        <div className="w-50">
+        <motion.div
+        initial={{ opacity: 0, x: -50 }} 
+        animate={{ opacity: 1, x: 0 }} 
+        transition={{ duration: 1 }} 
+      >
+        <h1 className='my-3'>Book Your Beautician Today!</h1>
+        <h3>Elevate your beauty experience with us. Discover your beauty professional and book now!</h3>
+      </motion.div>
+      </div>
+      </div>
+      
         <div class="intro-svg">
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
             <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
@@ -36,15 +31,9 @@ const HomePage = () => {
       
       </div>
       
-    </div>  
-    {/* <div className="container">
-      {beaucticians && beaucticians.map(beauctician =>(
-      <Fragment key={beauctician._id}>
-        <Profile beauctician={beauctician}/>
-      </Fragment>
-    ))}
-    </div> */}
-    
+    </section>
+    <ProfileList/>
+    <Services/>
     </>
   )
 }

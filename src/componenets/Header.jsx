@@ -40,7 +40,7 @@ const Header = () => {
 
     return (
         <>
-            <header className="p-2">
+            <header className="p-3">
                 <div className="container">
                     <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                         <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
@@ -63,7 +63,7 @@ const Header = () => {
                         <p className='mx-2 my-0'><Link to={`/profile/${user?._id}`}>{user?.name}</Link></p>
                         <div className="dropdown text-end mx-2">
                             <Link to="#" className="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" className="rounded-circle" />
+                                <img src="https://i.pinimg.com/564x/3d/cd/4a/3dcd4af5bc9e06d36305984730ab7888.jpg" alt="mdo" width="32" height="32" className="rounded-circle" />
                             </Link>
                             <ul className="dropdown-menu text-small">
 

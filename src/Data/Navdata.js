@@ -13,7 +13,7 @@ export const UserTopMenu = [
     },
     {
         name:'Book Now',
-        path:'/booknow'
+        path:'/profile'
     },
     {
         name:'About Us',

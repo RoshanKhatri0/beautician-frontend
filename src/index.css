@@ -5,12 +5,13 @@
     margin: 0;
     box-sizing: border-box;
     font-family: "Lobster", sans-serif;
-    
+    scroll-behavior: smooth;
     
 }
 header{
   font-weight: 600;
   background-color: #fbb9b6;
+  font-size: 1.3em;
 }
 .footer{
   background-color: #fbb9b6;
@@ -36,13 +37,20 @@ header{
   width: calc(122% + 1.3px);
   height: 298px;
 }
-.intro{
-  height: 100vh;
-}
-.intro-svg .shape-fill {
-  fill: #FFFFFF;
+.intro {
+  height: 90vh;
+  background-image: url('images/intro.png'); /* Adjust the path accordingly */
+  background-size: cover;
 }
 
+.intro-svg .shape-fill {
+  fill: #FFF5EE;
+}
+
+/* Profile section */
+.profilesec{
+  background-color: #FFF5EE;
+}
 /* loading */
 .spinner{
     height: 100vh;
@@ -134,16 +142,15 @@ a{
   
   .pcard .bottom .content .name {
     display: block;
-    font-size: 1.2rem;
-    color: white;
-    font-weight: bold;
+    font-size: 1.1rem;
+    color: black;
+    font-weight: 600;
   }
   
   .pcard .bottom .content .about-me {
     display: block;
     font-size: 0.9rem;
-    font-weight: bold;
-    color: white;
+    color: black;
     margin-top: 1rem;
   }
   
@@ -311,4 +318,114 @@ a{
     left: auto;
     right: 15%;
     animation-delay: 0.3s;
+  }
+  /* Learn more button */
+  .lbutton {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+  }
+  
+  .lbutton.learn-more {
+    width: 12rem;
+    height: auto;
+  }
+  
+  .lbutton.learn-more .circle {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    box-shadow: 0 0 5px 1px white;
+    position: relative;
+    display: block;
+    margin: 0;
+    width: 3rem;
+    height: 3rem;
+    background: #282936;
+    border-radius: 1.625rem;
+  }
+  
+  .lbutton.learn-more .circle .icon {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: #fff;
+  }
+  
+  .lbutton.learn-more .circle .icon.arrow {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    left: 0.625rem;
+    width: 1.125rem;
+    height: 0.125rem;
+    background: none;
+  }
+  
+  .lbutton.learn-more .circle .icon.arrow::before {
+    position: absolute;
+    content: "";
+    top: -0.29rem;
+    right: 0.0625rem;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-top: 0.125rem solid #fff;
+    border-right: 0.125rem solid #fff;
+    transform: rotate(45deg);
+  }
+  
+  .lbutton.learn-more .button-text {
+    font-family: 'Times New Roman', Times, serif;
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.75rem 0;
+    margin: 0 0 0 1.85rem;
+    color: #fff;
+    font-weight: 600;
+    line-height: 1.6;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  .lbutton:hover .circle {
+    width: 100%;
+    box-shadow: 0 0 10px 2px white;
+  }
+  
+  .lbutton:hover .button-text {
+    transform: translate(-1.7rem, 0);
+  }
+  
+  .lbutton:hover .circle .icon.arrow {
+    background: #fff;
+    transform: translate(8.7rem, 0);
+  }
+  
+  .lbutton:active .circle .icon.arrow {
+    transform: translate(9.5rem, 0);
+    transition: all 0.3s;
+  }
+  
+  .lbutton:active .circle {
+    transform: scale(0.9);
+    transition: all 0.3s;
+    box-shadow: 0 0 5px 0.5px white;
+  }
+  
+  .lbutton:hover .button-text {
+    color: #fff;
+  }
+  
+  .lbutton:active .button-text {
+    color: rgba(255, 255, 255, 0.459);
   }

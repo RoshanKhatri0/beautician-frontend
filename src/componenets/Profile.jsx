@@ -6,7 +6,8 @@ const Profile = ({ beauctician}) => {
   const navigate = useNavigate()
   return (
     <>
-      <div className="container d-flex justify-content-center">
+    <div className="col">
+      <div className="container">
         <div className="pcard">
           <div className="mail">
           <i className="fa-regular fa-envelope fa-2xl"></i>
@@ -18,7 +19,7 @@ const Profile = ({ beauctician}) => {
             <div className="content">
               <span className="name">{beauctician.beautician_name}</span>
               <span className="about-me">{beauctician.beautician_bio}</span>
-              <span className='text-end text-white'><i className="fa-solid fa-arrow-right fa-xl text-end"  onClick={()=> navigate(`/profile/${beauctician._id}`)}></i></span>
+              <span className='text-end'><i className="fa-solid fa-arrow-right fa-xl"  onClick={()=> navigate(`/profile/${beauctician._id}`)}></i></span>
             </div>
             <div className="bottom-bottom">
               <div className="social-links-container">
@@ -32,6 +33,8 @@ const Profile = ({ beauctician}) => {
         </div>
 
       </div>
+    </div>
+      
 
     </>
   )

@@ -82,7 +82,7 @@ const NotificationPage = () => {
                             <ul className="list-group mt-3">
                                 {user?.notification.map((notificationMsg, index) => (
                                     <li key={index} className="list-group-item" onClick={() => navigate(notificationMsg.onClickPath)} style={{ cursor: "pointer" }}>
-                                        <span className={`badge bg-primary me-2`}>{notificationMsg.type}</span>
+                                        <span className={`badge bg-warning me-2 text-black fs-6`}>{notificationMsg.type}</span>
                                         {notificationMsg.message}
                                     </li>
                                 ))}
@@ -96,7 +96,7 @@ const NotificationPage = () => {
                             <ul className="list-group mt-3">
                                 {user?.seennotification.map((notificationMsg, index) => (
                                     <li key={index} className="list-group-item" onClick={() => navigate(notificationMsg.onClickPath)} style={{ cursor: "pointer" }}>
-                                        <span className={`badge bg-primary me-2`}>{notificationMsg.type}</span>
+                                        <span className={`badge bg-warning me-2 text-dark fs-6`}>{notificationMsg.type}</span>
                                         {notificationMsg.message}
                                     </li>
                                 ))}
