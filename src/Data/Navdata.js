@@ -8,21 +8,21 @@ export const UserTopMenu = [
         path:'/appointments'
     },
     {
-        name:'Shop',
-        path:'/shop'
-    },
-    {
-        name:'Products',
-        path:'/products'
-    },
-    {
         name:'Services',
         path:'/services'
+    },
+    {
+        name:'Book Now',
+        path:'/booknow'
+    },
+    {
+        name:'About Us',
+        path:'/about'
     },
 ]
 export const UserDropdownMenu =[
     {
-        name:'Apply Beautician',
+        name:'Apply for Beautician',
         path:'/apply-beautician',
         icon:'<i class="fa-solid fa-person-dress"></i>'
     },
@@ -33,10 +33,6 @@ export const AdminTopMenu = [
     {
         name:'Home',
         path:'/'
-    },
-    {
-        name:'Appointments',
-        path:'/appointments'
     },
     {
         name:'Beauticians',
@@ -64,12 +60,12 @@ export const BeauticianTopMenu = [
         path:'/beautician-appointments'
     },
     {
-        name:'Shop',
-        path:'/shop'
+        name:'Services',
+        path:'/services'
     },
     {
-        name:'Products',
-        path:'/products'
+        name:'About Us',
+        path:'/about'
     },
     
 ]

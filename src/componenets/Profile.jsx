@@ -6,7 +6,7 @@ const Profile = ({ beauctician}) => {
   const navigate = useNavigate()
   return (
     <>
-      <div className="container mt-5 d-flex justify-content-center">
+      <div className="container d-flex justify-content-center">
         <div className="pcard">
           <div className="mail">
           <i className="fa-regular fa-envelope fa-2xl"></i>

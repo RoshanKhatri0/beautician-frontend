@@ -40,12 +40,9 @@ const Header = () => {
 
     return (
         <>
-            <header className="p-3 mb-3 border-bottom bg-secondary-subtle">
+            <header className="p-2 mb-3 border-bottom bg-secondary-subtle fixed-top">
                 <div className="container">
                     <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                        <Link to="/" className="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
-                            Beautician</Link>
-
                         <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                             {TopMenu.map(menu => {
                                 return (
@@ -54,18 +51,17 @@ const Header = () => {
                                     </>
                                 )
                             })}
-
                         </ul>
                         <Link to='/notification'>
-                        <div className="position-relative mx-1">
+                        <div className="position-relative mx-2">
                             <i className="fa-solid fa-bell fa-xl"></i>
                             <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                 {user && user.notification.length}
                             </span>
                         </div>
                         </Link>
-                        <p className='mx-2'><Link to='/profile'>{user?.name}</Link></p>
-                        <div className="dropdown text-end">
+                        <p className='mx-2 my-0'><Link to='/profile'>{user?.name}</Link></p>
+                        <div className="dropdown text-end mx-2">
                             <Link to="#" className="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" className="rounded-circle" />
                             </Link>
