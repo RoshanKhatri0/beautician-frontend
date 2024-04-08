@@ -90,7 +90,7 @@ const Services = () => {
                                 <div className="card p-3">
                                     <img className='rounded-circle' src="https://i.pinimg.com/564x/17/4d/04/174d049cc7591eb3ed66986a023bd534.jpg" alt="service" width="140" height="140" />
                                     <h2 class="fw-normal">Bridal Packages</h2>
-                                    <p>Provide specialized bridal packages that include pre-wedding skincare treatments, makeup trials, bridal party services, and on-site wedding day services</p>
+                                    <p>Provide specialized packages that include pre-wedding skincare treatments and on-site wedding day services</p>
                                     <button class="lbutton learn-more">
                                         <span aria-hidden="true" class="circle">
                                             <span class="icon arrow"></span>

@@ -30,7 +30,7 @@ const Header = () => {
             break;
         case 2:
             TopMenu = BeauticianTopMenu;
-            DropdownMenu = BeauticianDropdownMenu; 
+            DropdownMenu = BeauticianDropdownMenu;
             break;
         default:
             TopMenu = UserTopMenu;
@@ -53,14 +53,16 @@ const Header = () => {
                             })}
                         </ul>
                         <Link to='/notification'>
-                        <div className="position-relative mx-2">
-                            <i className="fa-solid fa-bell fa-xl"></i>
-                            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                {user && user.notification.length}
-                            </span>
-                        </div>
+                            <div className="position-relative mx-2">
+                                <i className="fa-solid fa-bell fa-xl"></i>
+                                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    {user && user.notification.length}
+                                </span>
+                            </div>
                         </Link>
-                        <p className='mx-2 my-0'><Link to={`/profile/${user?._id}`}>{user?.name}</Link></p>
+                        <p className='mx-2 my-0' style={{cursor:'pointer'}}>
+                            {user?.name}
+                        </p>
                         <div className="dropdown text-end mx-2">
                             <Link to="#" className="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="https://i.pinimg.com/564x/3d/cd/4a/3dcd4af5bc9e06d36305984730ab7888.jpg" alt="mdo" width="32" height="32" className="rounded-circle" />
@@ -74,12 +76,17 @@ const Header = () => {
                                         </>
                                     )
                                 })}
-                                <li>
-                                    <Link className="dropdown-item" to= {`/profile/${user?._id}`} >
-                                        <i className="fa-solid fa-user"></i> Profile
-                                    </Link>
-                                </li>
-                                <li><hr className="dropdown-divider" /></li>
+                                {role === 2 && (
+                                    <>
+                                        <li>
+                                            <Link className="dropdown-item" to={`/profile/${user?._id}`}>
+                                                <i className="fa-solid fa-user"></i> Profile
+                                            </Link>
+                                        </li>
+                                        <li><hr className="dropdown-divider" /></li>
+                                    </>
+                                )}
+                                
                                 <li onClick={handleLogout}>
                                     <Link className="dropdown-item" to="/login">
                                         <i className="fa-solid fa-right-from-bracket"></i> Logout
