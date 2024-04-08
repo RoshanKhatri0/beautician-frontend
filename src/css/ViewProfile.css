@@ -1,0 +1,11 @@
+.background{
+    height: 100vh;
+    background-image: url('../images/backgroundimage.jpg');
+}
+.vcard{
+    background-color: #FAF9F6;
+    height:75%;
+}
+.vcard-body{
+    margin-top: 4rem;
+}

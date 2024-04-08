@@ -52,9 +52,9 @@ const Login = () => {
     return (
         <>
             <div className="container-fluid d-flex align-items-center justify-content-center" style={{ minHeight: "100vh" }}>
-                <div className="card">
+                <div className="card1">
                     <div className="card2">
-                        <form className="form"  onSubmit={onFinish}>
+                        <form className="form1"  onSubmit={onFinish}>
                             <p id="heading">Welcome back, Login</p>
                             <div className="field">
                                 <svg

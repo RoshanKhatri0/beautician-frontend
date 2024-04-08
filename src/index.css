@@ -39,7 +39,7 @@ header{
 }
 .intro {
   height: 90vh;
-  background-image: url('images/intro.png'); /* Adjust the path accordingly */
+  background-image: url('images/intro.png');
   background-size: cover;
 }
 

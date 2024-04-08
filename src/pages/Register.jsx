@@ -66,9 +66,9 @@ const Register = () => {
 
     return (
         <div className="container-fluid d-flex align-items-center justify-content-center" style={{ minHeight: "100vh" }}>
-            <div className="card">
+            <div className="card1">
                 <div className="card2">
-                    <form className="form" onSubmit={handleSubmit}>
+                    <form className="form1" onSubmit={handleSubmit}>
                         <p id="heading">New Here? Register Now</p>
                         <div className="field">
                             <input

@@ -159,7 +159,7 @@ const UpdateProfile = () => {
     <>
       {
         user && (
-          <div className="container">
+          <div className="container p-3 mb-3">
         <h1>Form to Update Your Profile</h1>
         <form onSubmit={handleSubmit}>
           {/* Personal Details */}
