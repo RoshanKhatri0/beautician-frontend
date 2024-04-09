@@ -21,6 +21,7 @@ import Services from './componenets/Services'
 import ProfileList from './componenets/ProfileList'
 import AboutUs from './pages/AboutUs'
 import ViewProfile from './pages/Beautician/ViewProfile'
+import UpdatePicture from './pages/Beautician/UpdatePicture'
 
 const MyRoute = () => {
   const {loading} = useSelector(state=>state.alerts)
@@ -33,6 +34,7 @@ const MyRoute = () => {
                       <Route index element={<ProtectedRoutes> <HomePage/> </ProtectedRoutes>}/>
                       <Route path='/apply-beautician' element={<ProtectedRoutes> <ApplyBeautician/> </ProtectedRoutes>}/>
                       <Route path='/profile/:id' element={<ProtectedRoutes> <UpdateProfile/> </ProtectedRoutes>}/>
+                      <Route path='/updatepic/:id' element={<ProtectedRoutes> <UpdatePicture/> </ProtectedRoutes>}/>
                       <Route path='/viewbprofile' element={<ProtectedRoutes> <ViewProfile/> </ProtectedRoutes>}/>
                       <Route path='/book-appointment/:beauticianId' element={<ProtectedRoutes> <BookingPage/> </ProtectedRoutes>}/>
                       <Route path='/users' element={<ProtectedRoutes> <Users/> </ProtectedRoutes>}/>

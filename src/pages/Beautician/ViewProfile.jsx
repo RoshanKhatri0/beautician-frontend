@@ -37,14 +37,18 @@ const ViewProfile = () => {
     <>
       {beautician && (
         <div className="container-fluid p-0 background d-flex justify-content-around align-items-center">
-          <div className="card w-75 vcard d-flex justify-content-center align-items-center position-relative">
-            <img
+          <div className="card w-75 vcard d-flex justify-content-center align-items-center">
+            <div className='position-relative profile'>
+                <img
               src={`${IMG_URL}/${beautician.beautician_profilepic}`}
               height={150}
               width={150}
               className="rounded-circle position-absolute top-0 start-50 translate-middle border border-dark"
               alt="..."
             />
+            <a class="vcard-button" href={`/updatepic/${user?._id}`}>Edit</a>
+            </div>
+            
             <div className="card-body vcard-body d-flex flex-column align-items-center">
               <h2 className="card-title text-center">
                 <strong>Name: </strong>
@@ -64,6 +68,18 @@ const ViewProfile = () => {
                     <strong>Services: </strong>
                     {beautician.services_offered}
                   </p>
+                  <p className="text-center">
+                    <strong>Email: </strong>
+                    {beautician.contact_info.email}
+                  </p>
+                  <p className="text-center">
+                    <strong>Facebook: </strong>
+                    {beautician.socials.facebook}
+                  </p>
+                  <p className="text-center">
+                    <strong>Instagram: </strong>
+                    {beautician.socials.instragram}
+                  </p>
                 </div>
                 <div className="col-md-6">
                   <p className="text-center">
@@ -73,6 +89,14 @@ const ViewProfile = () => {
                   <p className="text-center">
                     <strong>Working Hours: </strong>
                     {beautician.working_hours}
+                  </p>
+                  <p className="text-center">
+                    <strong>PhoneNumber: </strong>
+                    {beautician.contact_info.phoneNumber}
+                  </p>
+                  <p className="text-center">
+                    <strong>Tiktok: </strong>
+                    {beautician.socials.tiktok}
                   </p>
                 </div>
               </div>
