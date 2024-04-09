@@ -79,7 +79,7 @@ const Header = () => {
                                 {role === 2 && (
                                     <>
                                         <li>
-                                            <Link className="dropdown-item" to={`/profile/${user?._id}`}>
+                                            <Link className="dropdown-item" to={`/viewbprofile`}>
                                                 <i className="fa-solid fa-user"></i> Profile
                                             </Link>
                                         </li>
