@@ -328,10 +328,21 @@ const UpdateProfile = () => {
                 />
               </div>
             </div>
+            <div className="d-flex justify-content-center">
+              <button className="btn-53 mt-3" type="submit">
+                <div className="original">Submit</div>
+                <div className="letters">
+                  <span>S</span>
+                  <span>U</span>
+                  <span>B</span>
+                  <span>M</span>
+                  <span>I</span>
+                  <span>T</span>
+                </div>
+              </button>
+            </div>
+                
 
-            <button type="submit" className="btn btn-primary">
-              Submit
-            </button>
           </form>
         </div>
       )}

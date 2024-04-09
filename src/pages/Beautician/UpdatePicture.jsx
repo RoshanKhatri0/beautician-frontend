@@ -52,47 +52,37 @@ const UpdatePicture = () => {
     <>
       {
         user && (
-          <div className="container p-3 mb-3">
-        <h1>Form to Update Your Profile Picture</h1>
+          <div className="container p-3 mb-3 d-flex align-items-center flex-column">
+        <h1 className='text-center'>Form to Update Your Profile Picture</h1>
         <form onSubmit={handleSubmit}>
 
           {/* File Inputs */}
-          <div className="row mb-3">
-            <div className="col-md-6">
-              <label htmlFor="profilePic" className="form-label">
+              <label htmlFor="profilePic" className="form-label" >
                 Profile Picture <span className="text-danger">*</span>
               </label>
               <input
                 type="file"
-                className="form-control"
+                className="form-control w-100"
                 id="profilePic"
                 name="profilePic"
                 onChange={handleFileChange}
                 accept="image/*"
                 required
               />
-            </div>
-          </div>
-          {/* <div className="row mb-3">
-            <div className="col-md-6">
-              <label htmlFor="gallery" className="form-label">
-                Gallery
-              </label>
-              <input
-                type="file"
-                className="form-control"
-                id="gallery"
-                name="gallery"
-                onChange={handleFileChange}
-                accept="image/*"
-                multiple
-              />
-            </div>
-          </div> */}
-
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
+           
+          
+          <button className="btn-53 mt-3" type="submit">
+                <div className="original">Submit</div>
+                <div className="letters">
+                  <span>S</span>
+                  <span>U</span>
+                  <span>B</span>
+                  <span>M</span>
+                  <span>I</span>
+                  <span>T</span>
+                </div>
+              </button>
+          
         </form>
       </div>
         )
