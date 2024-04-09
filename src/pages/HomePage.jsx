@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion';
 import Services from '../componenets/Services';
 import ProfileList from '../componenets/ProfileList';
+import introgif from '../images/beautifygif.gif'
 
 const HomePage = () => {
   
@@ -9,17 +10,24 @@ const HomePage = () => {
   return (
     <>
     <section className="position-relative intro p-3">
-      <div className="container d-flex align-items-center h-50">
-        <div className="w-50">
-        <motion.div
-        initial={{ opacity: 0, x: -50 }} 
-        animate={{ opacity: 1, x: 0 }} 
-        transition={{ duration: 1 }} 
-      >
-        <h1 className='my-3'>Book Your Beautician Today!</h1>
-        <h3>Elevate your beauty experience with us. Discover your beauty professional and book now!</h3>
-      </motion.div>
-      </div>
+      <div className="container-fluid d-flex align-items-center">
+        <div className="row my-5 h-100 justify-content-around">
+          <div className="col-md-6">
+                  <motion.div
+                  initial={{ opacity: 0, x: -50 }} 
+                  animate={{ opacity: 1, x: 0 }} 
+                  transition={{ duration: 1 }} 
+                >
+                  <h1 className=''>Book Your Beautician Today!</h1>
+                  <h3>Elevate your beauty experience with us. Discover your beauty professional and book now!</h3>
+                </motion.div>
+                </div>
+                <div className="col-md-4">
+          <img src={introgif} width={500} alt="intro gif" />
+        </div>
+        </div>
+        
+        
       </div>
       
         <div class="intro-svg">

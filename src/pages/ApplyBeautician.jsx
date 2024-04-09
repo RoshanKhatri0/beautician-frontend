@@ -27,7 +27,6 @@ const ApplyBeautician = () => {
     working_hours: '',
     certifications: '',
     beautician_profilepic: null,
-    gallery: [],
   });
 
   const handleChange = name => event => {
@@ -37,27 +36,10 @@ const ApplyBeautician = () => {
     });
   };
 
-  // const handleFileChange = (e) => {
-  //   const { name, files } = e.target;
-  //   if (name === 'beautician_profilepic') {
-  //     // If profilePic, store the first selected file
-  //     setFormData({
-  //       ...formData,
-  //       [name]: files[0],
-  //     });
-  //   } else if (name === 'gallery') {
-  //     // If gallery, store an array of all selected files
-  //     const fileList = Array.from(files);
-  //     setFormData({
-  //       ...formData,
-  //       [name]: fileList,
-  //     });
-  //   }
-  // };
   const handleFileChange = event =>{
     setFormData({...formData, beautician_profilepic:event.target.files[0]})
   }
-  const {beautician_name,beautician_bio,experience,gallery,pricing,services_offered,working_hours,certifications} = formData
+  const {beautician_name,beautician_bio,email,phoneNumber,experience,facebook,instragram,tiktok,pricing,services_offered,working_hours,certifications} = formData
   const handleSubmit = async e => {
     e.preventDefault();
       dispatch(showLoading());
@@ -66,11 +48,16 @@ const ApplyBeautician = () => {
       const formDataToSend = new FormData();
       formDataToSend.append('beautician_name', beautician_name)
       formDataToSend.append('beautician_bio', beautician_bio)
+      formDataToSend.append('contact_info[email]', email)
+      formDataToSend.append('contact_info[phoneNumber]', phoneNumber)
       formDataToSend.append('experience', experience)
       formDataToSend.append('pricing', pricing)
       formDataToSend.append('services_offered', services_offered)
       formDataToSend.append('working_hours', working_hours)
       formDataToSend.append('certifications', certifications)
+      formDataToSend.append('socials[facebook]', facebook)
+      formDataToSend.append('socials[instragram]', instragram)
+      formDataToSend.append('socials[tiktok]', tiktok)
       formDataToSend.append('beautician_profilepic', formData.beautician_profilepic)
       formDataToSend.append('userId', user._id);
 
@@ -105,7 +92,6 @@ const ApplyBeautician = () => {
           working_hours: '',
           certifications: '',
           beautician_profilepic: null,
-          gallery: [],
         });
       } else {
         toast.error(res.data.message);
@@ -143,7 +129,7 @@ const ApplyBeautician = () => {
               className="form-control"
               id="email"
               name="email"
-              value={formData.email}
+              value={email}
               onChange={handleChange('email')}
               required
             />
@@ -153,29 +139,29 @@ const ApplyBeautician = () => {
           <div className="col-md-6">
             <label htmlFor="phoneNumber" className="form-label">
               Phone Number 
-              {/* <span className="text-danger">*</span> */}
+              <span className="text-danger">*</span>
             </label>
             <input
-              type="tel"
+              type="text"
               className="form-control"
               id="phoneNumber"
               name="phoneNumber"
-              value={formData.phoneNumber}
-              onChange={handleChange}
-              // required
+              value={phoneNumber}
+              onChange={handleChange('phoneNumber')}
+              required
             />
           </div>
           <div className="col-md-6">
-            <label htmlFor="instagram" className="form-label">
+            <label htmlFor="instragram" className="form-label">
               Instagram
             </label>
             <input
               type="text"
               className="form-control"
-              id="instagram"
-              name="instagram"
-              value={formData.instagram}
-              onChange={handleChange}
+              id="instragram"
+              name="instragram"
+              value={instragram}
+              onChange={handleChange('instragram')}
             />
           </div>
         </div>
@@ -190,7 +176,7 @@ const ApplyBeautician = () => {
               id="facebook"
               name="facebook"
               value={formData.facebook}
-              onChange={handleChange}
+              onChange={handleChange('facebook')}
             />
           </div>
           <div className="col-md-6">
@@ -203,7 +189,7 @@ const ApplyBeautician = () => {
               id="tiktok"
               name="tiktok"
               value={formData.tiktok}
-              onChange={handleChange}
+              onChange={handleChange('tiktok')}
             />
           </div>
         </div>
@@ -221,6 +207,7 @@ const ApplyBeautician = () => {
               name="bio"
               value={beautician_bio}
               onChange={handleChange('beautician_bio')}
+              required
             ></textarea>
           </div>
           <div className="col-md-6">
@@ -311,22 +298,6 @@ const ApplyBeautician = () => {
             />
           </div>
         </div>
-        {/* <div className="row mb-3">
-          <div className="col-md-6">
-            <label htmlFor="gallery" className="form-label">
-              Gallery
-            </label>
-            <input
-              type="file"
-              className="form-control"
-              id="gallery"
-              name="gallery"
-              onChange={handleFileChange}
-              accept="image/*"
-              multiple
-            />
-          </div>
-        </div> */}
 
         <button type="submit" className="btn btn-primary">
           Submit
