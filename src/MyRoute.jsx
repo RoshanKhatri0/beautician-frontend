@@ -22,6 +22,7 @@ import ProfileList from './componenets/ProfileList'
 import AboutUs from './pages/AboutUs'
 import ViewProfile from './pages/Beautician/ViewProfile'
 import UpdatePicture from './pages/Beautician/UpdatePicture'
+import ViewBeauticianP from './pages/user/ViewBeauticianP'
 
 const MyRoute = () => {
   const {loading} = useSelector(state=>state.alerts)
@@ -36,6 +37,7 @@ const MyRoute = () => {
                       <Route path='/profile/:id' element={<ProtectedRoutes> <UpdateProfile/> </ProtectedRoutes>}/>
                       <Route path='/updatepic/:id' element={<ProtectedRoutes> <UpdatePicture/> </ProtectedRoutes>}/>
                       <Route path='/viewbprofile' element={<ProtectedRoutes> <ViewProfile/> </ProtectedRoutes>}/>
+                      <Route path='/viewbeautician/:beauticianId' element={<ProtectedRoutes> <ViewBeauticianP/> </ProtectedRoutes>}/>
                       <Route path='/book-appointment/:beauticianId' element={<ProtectedRoutes> <BookingPage/> </ProtectedRoutes>}/>
                       <Route path='/users' element={<ProtectedRoutes> <Users/> </ProtectedRoutes>}/>
                       <Route path='/beauticians' element={<ProtectedRoutes> <Beautician/> </ProtectedRoutes>}/>
