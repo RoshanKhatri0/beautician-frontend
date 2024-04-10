@@ -20,6 +20,13 @@ const BookingPage = () => {
     const [time, setTime] = useState('')
     const [isDateTimeSelected, setIsDateTimeSelected] = useState(false) // State to track if date and time are selected
     const dispatch = useDispatch()
+    const [appdata, setappData] = useState({
+        phoneNumber: '',
+        location: '',
+        service: '',
+        remark: '',
+    })
+    const { phoneNumber, location, service, remark } = appdata
 
     const getBeauticianData = async () => {
         try {
@@ -46,8 +53,14 @@ const BookingPage = () => {
         setDate(formattedDate)
         setTime(formattedTime)
         setSelectedDateTime(newDateTime)
-        setIsDateTimeSelected(true) 
+        setIsDateTimeSelected(true)
     }
+    const handleChange = name => event => {
+        setappData({
+            ...appdata,
+            [name]: event.target.value,
+        });
+    };
 
     // Booking
     const handleBooking = async () => {
@@ -60,7 +73,8 @@ const BookingPage = () => {
                     beauticianInfo: beaucticians,
                     userInfo: user,
                     date: date,
-                    time: time
+                    time: time,
+                    ...appdata
                 },
                 {
                     headers: {
@@ -90,28 +104,25 @@ const BookingPage = () => {
                             <div className="col-md-6">
                                 <form>
                                     <div className="form-group">
-                                        <label htmlFor="phone">Phone Number:</label>
-                                        <input type="tel" className="form-control" id="phone" placeholder="Enter phone number" />
+                                        <label htmlFor="phone">Phone Number: <span className="text-danger">*</span></label>
+                                        <input type="text" className="form-control" id="phoneNumber" placeholder="Enter phone number" name='phoneNumber' value={phoneNumber} onChange={handleChange('phoneNumber')} required />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="location">Location:</label>
-                                        <input type="text" className="form-control" id="location" placeholder="Enter location" />
+                                        <label htmlFor="location">Location: <span className="text-danger">*</span></label>
+                                        <input type="text" className="form-control" id="location" placeholder="Enter location" name='location' value={location} onChange={handleChange('location')} required />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="services">Select Service:</label>
-                                        <select className="form-control" id="services">
-                                            <option value="service1">Service 1</option>
-                                            <option value="service2">Service 2</option>
-                                            <option value="service3">Service 3</option>
-                                        </select>
+                                        <label htmlFor="services">Select Service: <span className="text-danger">*</span></label>
+                                        <input type="text" className="form-control" id="service" placeholder="Enter service" name='service' value={service} onChange={handleChange('service')} required />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="remark">Remark:</label>
-                                        <textarea className="form-control" id="remark" rows="3" placeholder="Enter remark"></textarea>
+                                        <label htmlFor="remark">Remark: </label>
+                                        <textarea className="form-control" id="remark" rows="3" placeholder="Enter remark" name='remark' value={remark} onChange={handleChange('remark')} required></textarea>
                                     </div>
                                 </form>
                             </div>
                             <div className="col-md-6">
+                                <label htmlFor="remark">Select Date Time: <span className="text-danger">*</span></label>
                                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                                     <DemoContainer components={[
                                         'DateTimePicker',
@@ -123,6 +134,10 @@ const BookingPage = () => {
                                             orientation="landscape" />
                                     </DemoContainer>
                                 </LocalizationProvider>
+                                <br/>
+                                <div class="alert alert-danger" role="alert">
+                                    Select and check Date and Time Before Submitting
+                                </div>
                             </div>
                             <div className="col-md-12 text-center p-3">
                                 <button type="submit" className="btn btn-primary btn-lg" onClick={handleBooking} disabled={!isDateTimeSelected}>Book Now</button>
